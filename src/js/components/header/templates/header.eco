@@ -1,0 +1,16 @@
+<h1>Sensor Industries</h1>
+
+<ul class="complex-nav">
+  <li><a href="#complex-profile" class="profile">Profile</a></li>
+  <li><a href="#units" class="units">Units</a></li>
+  <li><a href="#alerts" class="alerts">Alerts</a></li>
+</ul>
+
+<div class="user">
+  <div class="name"><span>Complex Name</span></div>
+  <ul>
+    <li><a href="#company-profile">Company Profile</a></li>
+    <li><a href="#complexes">Switch Complex</a></li>
+    <li><a href="#sign-out" class="sign-out">Sign Out</a></li>
+  </ul>
+</div>

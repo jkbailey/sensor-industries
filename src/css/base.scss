@@ -1,0 +1,38 @@
+@import 'normalize';
+@import 'bourbon';
+
+
+$sensor-blue: #259cd4;
+
+$body-bg: #fff;
+$body-text: #2a2a2a;
+
+
+$header-height: 60px;
+
+@import 'utils/helpers';
+@import 'utils/buttons';
+@import 'utils/forms';
+
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: $body-bg;
+  color: $body-text;
+  font-family: 'Open Sans', sans-serif;
+}
+
+button,
+input,
+select {
+  outline: none;
+}
+
+
+@import 'header';
+@import 'body';
+@import 'overlay';
+@import 'login';

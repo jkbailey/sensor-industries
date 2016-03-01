@@ -1,0 +1,30 @@
+<div class="login-container">
+  <div class="logo">
+
+    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+    	 width="80px" height="120.728px" viewBox="103.546 38.727 80 120.728" enable-background="new 103.546 38.727 80 120.728"
+    	 xml:space="preserve">
+    <path fill="#FFFFFF" d="M172.055,89.636c-9.018-15.127-21.09-32.582-28.509-50.909c-7.418,18.328-19.491,35.782-28.509,50.909
+    	c-6.254,10.618-11.491,17.019-11.491,29.964c0,21.963,17.891,39.855,40,39.855s40-17.892,40-39.855
+    	C183.546,106.654,178.31,100.108,172.055,89.636z M141.736,149.938c-13.013-0.138-27.411-13.706-27.549-27.134
+    	c-0.062-5.963,0.026-10.325,2.354-14.398c7.752,25.058,18.378,34.631,45.546,35.026C156.549,148.416,149.3,150.019,141.736,149.938z
+    	"/>
+    </svg>
+
+  </div>
+  <h1>Sign&nbsp;in&nbsp;to Sensor&nbsp;Industries&nbsp;Inc.</h1>
+  <div class="form-container clear">
+    <div class="form-row">
+      <input type="text" name="username" id="username" placeholder="Username" class="no-border">
+    </div>
+    <div class="form-row">
+      <input type="password" name="password" id="password" placeholder="Password" class="no-border">
+    </div>
+    <div class="form-row login-error">
+      <span class="error-text">The username or password you entered was incorrect, please try again.</span>
+    </div>
+  </div>
+  <div class="form-row button-row">
+    <button class="btn primary big outline">Sign In</button>
+  </div>
+</div>

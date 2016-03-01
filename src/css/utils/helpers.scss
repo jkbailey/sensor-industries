@@ -1,0 +1,48 @@
+@mixin pseudo($display) {
+  content: '';
+  display: $display;
+}
+
+@mixin ellipsis() {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+
+.align-middle {
+  text-align: center;
+  position: relative;
+  height: 100%;
+
+  &:before {
+    content: '';
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+    margin-right: -0.25em;
+  }
+
+  & > * {
+    display: inline-block;
+    vertical-align: middle;
+  }
+}
+
+
+.float-left {
+  float: left;
+}
+
+.float-right {
+  float: right;
+}
+
+.float-clear:after {
+  @include pseudo(block);
+  clear: both;
+}
+
+.float-clear-self {
+  clear: both;
+}

@@ -1,0 +1,73 @@
+$save-color: #a2d393;
+$cancel-color: #604d53;
+$delete-color: #9da3a4;
+$delete-hover-color: #b52;
+$text-color: #fff;
+
+.btn {
+  @include size(120px 46px);
+  border: 0;
+  color: $text-color;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: .5px;
+  text-transform: uppercase;
+  padding: 1px 25px 0;
+
+  + .btn {
+    margin-left: 4px;
+  }
+
+  &.big {
+    @include size(180px 42px);
+    font-size: 14px;
+  }
+
+  &.auto-size {
+    width: auto;
+    padding: 1px 35px 0;
+  }
+
+  &.save,
+  &.add,
+  &.manage {
+    background: $save-color;
+
+    &:hover {
+      background: saturate($save-color, 10);
+    }
+  }
+
+  &.cancel {
+    background: $cancel-color;
+
+    &:hover {
+      background: darken($cancel-color, 10);
+    }
+  }
+
+  &.delete {
+    background: $delete-color;
+
+    &.red,
+    &:hover {
+      background: $delete-hover-color;
+    }
+
+    &.red:hover {
+      background: saturate($delete-hover-color, 10);
+    }
+  }
+}
+
+@mixin btn-outline($btn-color, $bg) {
+  background: transparent;
+  border: 2px solid $btn-color;
+  color: $btn-color;
+
+  &:hover {
+    background: $btn-color;
+    color: $bg;
+  }
+}

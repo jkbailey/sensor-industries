@@ -1,0 +1,110 @@
+$form-background: #f7f6f6;
+$form-border: #ebebeb;
+$form-subtitle: #999;
+$input-border: $form-border;
+$input-placeholder: #d7d7d7;
+
+.form-container {
+  background: $form-background;
+  border: 1px solid $form-border;
+  padding: 20px;
+
+  + .form-container {
+    margin-top: 15px;
+  }
+
+  &.clear {
+    background: transparent;
+  }
+
+  &.vertical-layout {
+    label {
+      opacity: .8;
+      padding-right: 10px;
+      text-align: right;
+      width: 33.9%;
+    }
+
+    .long {
+      width: 45%;
+    }
+
+    .short {
+      width: 11%;
+    }
+
+    .phone {
+      width: 25%;
+    }
+  }
+
+  h3 {
+    border-bottom: 1px solid $body-bg;
+    color: $form-subtitle;
+    font-size: 13px;
+    font-weight: 600;
+    margin: 0 10px 20px;
+    padding: 0 0 10px;
+    text-align: center;
+    text-transform: uppercase;
+  }
+}
+
+.form-row {
+  position: relative;
+
+  + .form-row {
+    margin-top: 10px;
+  }
+
+  &.button-row {
+    margin-top: 20px;
+    text-align: center;
+  }
+
+  label {
+    float: left;
+    font-size: 14px;
+    line-height: 32px;
+    padding-right: 8px;
+  }
+
+  .state-dropdown-container {
+    line-height: 32px;
+
+    select {
+      width: 100%;
+    }
+  }
+
+  input,
+  .state-dropdown-container {
+    float: left;
+  }
+
+  &:after {
+    @include pseudo(block);
+    clear: both;
+  }
+}
+
+input[type="text"],
+input[type="password"],
+input[type="number"] {
+  border: 1px solid $input-border;
+  font-size: 15px;
+  height: 32px;
+  padding: 0 8px;
+
+  @include placeholder {
+    color: $input-placeholder;
+    font-size: 15px;
+    font-style: italic;
+    font-weight: 300;
+    padding-top: 1px;
+  }
+
+  &.no-border {
+    border: 0;
+  }
+}

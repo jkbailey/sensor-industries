@@ -1,0 +1,12 @@
+$overlay-bg: #fff;
+
+#overlay {
+  @include position(fixed, 0 null null 0);
+  z-index: 100;
+
+  > * {
+    @include position(fixed, 0);
+    background: transparentize($overlay-bg, .15);
+    overflow: scroll;
+  }
+}

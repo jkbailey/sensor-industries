@@ -1,0 +1,48 @@
+$login-background: $sensor-blue;
+$login-color: #fff;
+
+#login {
+  background: $login-background;
+  color: $login-color;
+  padding: 30px 10px;
+
+  h1 {
+    font-weight: 300;
+  }
+
+  h1,
+  .form-container {
+    border: 0;
+    margin-top: 50px;
+  }
+
+  .button-row {
+    margin-top: 30px;
+
+    .outline {
+      @include btn-outline($login-color, $login-background);
+      font-weight: 500;
+    }
+  }
+
+  label {
+    width: 90px;
+    text-align: right;
+    font-weight: 300;
+    font-size: 18px;
+  }
+
+  input {
+    @include size(100% 40px);
+    color: $body-text;
+    float: none;
+    max-width: 300px;
+    padding: 0 14px;
+
+    @include placeholder {
+      color: lighten($login-background, 30);
+      font-style: italic;
+    }
+  }
+
+}
