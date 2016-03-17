@@ -1,10 +1,10 @@
 <h1>Parent Company Profile</h1>
 
-<div class="form-container vertical-layout">
+<div class="form-container vertical-layout company-form">
   <h3>Parent Company Information</h3>
   <div class="form-row">
-    <label for="name">Name:</label>
-    <input type="text" name="name" id="name" placeholder="Sensor Industries Inc." class="long">
+    <label for="companyName">Name:</label>
+    <input type="text" name="companyName" id="companyName" placeholder="Sensor Industries Inc." class="long">
   </div>
   <div class="form-row">
     <label for="phone">Phone:</label>
@@ -29,38 +29,10 @@
 </div>
 
 <div class="form-container vertical-layout">
-  <h3>Parent Company's First Point of Contact</h3>
-  <div class="form-row">
-    <label for="contact[firstName]">First Name:</label>
-    <input type="text" name="contact[firstName]" id="contact[firstName]" placeholder="Steve" class="long">
-  </div>
-  <div class="form-row">
-    <label for="contact[lastName]">Last Name:</label>
-    <input type="text" name="contact[lastName]" id="contact[lastName]" placeholder="Smith" class="long">
-  </div>
-  <div class="form-row">
-    <label for="contact[title]">Title:</label>
-    <input type="text" name="contact[title]" id="contact[title]" placeholder="Director of Operations" class="long">
-  </div>
-  <div class="form-row">
-    <label for="contact[phone]">Phone:</label>
-    <input type="text" name="contact[phone]" id="contact[phone]" placeholder="(805) 987-6543" class="phone">
-  </div>
-  <div class="form-row">
-    <label for="contact[address]">Address:</label>
-    <input type="text" name="contact[address]" id="contact[address]" placeholder="1234 Sensor st." class="long">
-  </div>
-  <div class="form-row">
-    <label for="contact[city]">City:</label>
-    <input type="text" name="contact[city]" id="contact[city]" placeholder="Camarillo" class="long">
-  </div>
-  <div class="form-row">
-    <label for="contact[state]">State:</label>
-    <div class="state-dropdown-container contact-state short"></div>
-  </div>
-  <div class="form-row">
-    <label for="contact[zip]">Zip:</label>
-    <input type="text" name="contact[zip]" id="contact[zip]" placeholder="93010" class="short">
+  <h3>Parent Company's Point of Contact</h3>
+  <ul class="contacts-list"></ul>
+  <div class="form-row text-btn-container">
+    <a class="text-btn add-contact">Add an additional point of contact</a>
   </div>
 </div>
 

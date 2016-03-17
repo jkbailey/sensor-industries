@@ -7,6 +7,7 @@
 
     ui:
       loginError: '.login-error'
+      username: '#userName'
 
     triggers:
       'click .primary': 'submit'
@@ -14,10 +15,13 @@
     onRender: ->
       @hideLoginError()
 
+    onShow: ->
+      @ui.username.focus()
+
     showLoginError: ->
       @ui.loginError.show()
 
     hideLoginError: ->
       @ui.loginError.hide()
 
-    @include 'Serialize'
+    @include 'Serialize', 'EnterPress'

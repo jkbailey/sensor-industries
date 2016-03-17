@@ -18,10 +18,11 @@
     setUserBox: ->
       if App.selectedComplex and App.selectedComplex.get('name')
         @headerLayout.updateUserBoxText App.selectedComplex.get('name')
-      else if App.company.isSetUp() and App.company.get('name')
+      else if App.company?.isSetUp() and App.company.get('name')
         @headerLayout.updateUserBoxText App.company.get('name')
-      else
+      else if App.company?.isSetUp()
         @headerLayout.updateUserBoxText '0123456789'
+
 
     setSelectedRoute: (route) ->
       switch route

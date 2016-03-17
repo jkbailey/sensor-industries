@@ -1,0 +1,17 @@
+<div class="form-row">
+  <label for="fullName">Name:</label>
+  <input type="text" name="fullName" id="fullName" placeholder="Steve" class="long">
+</div>
+<div class="form-row">
+  <label for="title">Title:</label>
+  <input type="text" name="title" id="title" placeholder="Director of Operations" class="long">
+</div>
+<div class="form-row">
+  <label for="phone">Phone:</label>
+  <input type="text" name="phone" id="phone" placeholder="(805) 987-6543" class="phone">
+</div>
+<div class="form-row">
+  <label for="emailAddress">Email:</label>
+  <input type="text" name="emailAddress" id="emailAddress" placeholder="Jim@sensor-industries.com" class="long">
+</div>
+<hr>

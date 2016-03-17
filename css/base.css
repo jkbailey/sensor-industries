@@ -340,6 +340,26 @@ input::-moz-focus-inner {
     .btn.delete.red:hover {
       background: #c65117; }
 
+.text-btn {
+  color: #3e93bb;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 18px;
+  text-transform: uppercase; }
+  .text-btn:hover {
+    color: #61a9cb;
+    cursor: pointer; }
+  .text-btn:before {
+    position: relative;
+    top: -2px;
+    color: inherit;
+    content: '+';
+    display: inline-block;
+    font-size: 18px;
+    line-height: 16px;
+    margin-right: 7px;
+    vertical-align: middle; }
+
 .form-container {
   background: #f7f6f6;
   border: 1px solid #ebebeb;
@@ -368,6 +388,8 @@ input::-moz-focus-inner {
     padding: 0 0 10px;
     text-align: center;
     text-transform: uppercase; }
+  .form-container hr {
+    border-color: #fff; }
 
 .form-row {
   position: relative; }
@@ -392,6 +414,31 @@ input::-moz-focus-inner {
     content: '';
     display: block;
     clear: both; }
+  .form-row .error-text {
+    position: absolute;
+    top: -45px;
+    left: 50%;
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+    color: #e47a00;
+    display: block;
+    margin-left: -300px;
+    padding: 10px;
+    text-align: center;
+    width: 600px; }
+    .form-row .error-text:after {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      border-color: #fff transparent transparent;
+      border-style: solid;
+      border-width: 8px;
+      margin-left: -8px; }
+  .form-row.text-btn-container {
+    text-align: right; }
 
 input[type="text"],
 input[type="password"],
@@ -450,6 +497,16 @@ input,
 select {
   outline: none; }
 
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0; }
+
+hr {
+  border-style: solid;
+  border-width: 1px 0 0;
+  margin: 25px 0; }
+
 #header {
   position: fixed;
   top: 0;
@@ -463,10 +520,6 @@ select {
   text-align: left;
   text-transform: uppercase;
   z-index: 50; }
-  #header ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0; }
   #header a {
     color: inherit;
     text-decoration: none; }
@@ -621,3 +674,16 @@ select {
     #login input:-ms-input-placeholder {
       color: #a3d7ef;
       font-style: italic; }
+  #login .error-text {
+    color: #E47A00;
+    background: #fff;
+    padding: 10px;
+    position: absolute;
+    width: 600px;
+    text-align: center;
+    display: block;
+    left: 50%;
+    margin-left: -300px;
+    top: -45px;
+    border-radius: 4px;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1); }

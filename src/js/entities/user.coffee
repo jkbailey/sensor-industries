@@ -6,32 +6,30 @@
 
   class Entities.User extends Backbone.Model
 
-    defaults:
-      id: 1
-      company_id: 1
-
-    localStorage: new Backbone.LocalStorage "User"
-
-    initialize: ->
-      @fetch()
+    url: "http://dev.waterr8.com:8080/api/v1/customer/login"
 
     setAuthString: ->
-      @set 'auth_string', btoa "#{@get('username')}:#{@get('password')}"
-      @unset 'username'
-      @unset 'password'
-      @save()
+      @set 'auth_string', btoa "casey:casey"
 
     validateUser: ->
-      testAuthString = btoa "#{@get('username')}:#{@get('password')}"
+      @setAuthString()
 
-      if testAuthString is tmpAuthString
-        @setAuthString()
-        @trigger 'user:valid'
-      else
-        @trigger 'user:invalid'
+      @save null,
+        success: =>
+          if @get('company')
+            App.company = App.request 'entities:company', @get('company')
+            if @get('contacts')
+              contacts = App.request 'entities:contacts', @get('contacts')
+              App.company.set 'contacts', contacts
+            @set 'userValid', true
+            @trigger 'user:valid'
+          else
+            @trigger 'user:invalid'
+        error: =>
+          @trigger 'user:invalid'
 
     isLoggedIn: ->
-      @get('auth_string')?
+      @get 'userValid'
 
   App.reqres.setHandler 'entities:user', (attrs) ->
     new Entities.User attrs

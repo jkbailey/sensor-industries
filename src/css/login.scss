@@ -45,4 +45,19 @@ $login-color: #fff;
     }
   }
 
+  .error-text {
+    color: #E47A00;
+    background: #fff;
+    padding: 10px;
+    position: absolute;
+    width: 600px;
+    text-align: center;
+    display: block;
+    left: 50%;
+    margin-left: -300px;
+    top: -45px;
+    border-radius: 4px;
+    box-shadow: 0 2px 20px rgba(0,0,0,.1);
+  }
+
 }

@@ -14,14 +14,14 @@
   </div>
   <h1>Sign&nbsp;in&nbsp;to Sensor&nbsp;Industries&nbsp;Inc.</h1>
   <div class="form-container clear">
+    <div class="form-row login-error">
+      <span class="error-text">The username or password you entered was incorrect, please try again.</span>
+    </div>
     <div class="form-row">
-      <input type="text" name="username" id="username" placeholder="Username" class="no-border">
+      <input type="text" name="userName" id="userName" placeholder="Username" class="no-border">
     </div>
     <div class="form-row">
       <input type="password" name="password" id="password" placeholder="Password" class="no-border">
-    </div>
-    <div class="form-row login-error">
-      <span class="error-text">The username or password you entered was incorrect, please try again.</span>
     </div>
   </div>
   <div class="form-row button-row">

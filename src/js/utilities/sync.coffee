@@ -5,8 +5,8 @@
     options.data = {} unless options.data
 
     if App.user
-      _.extend options.data,
-        "auth": App.user.get('auth_string')
+      options.beforeSend = (xhr) ->
+        xhr.setRequestHeader "Authorization", "Basic #{App.user.get('auth_string')}"
 
     if model? and (method in ['create', 'update', 'delete'])
       options.contentType = 'application/json'

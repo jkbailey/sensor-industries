@@ -2,12 +2,12 @@
 
   class Root.Controller extends Marionette.Controller
 
-    # initialize: ->
-    #   console.log 'init'
-
     onBeforeRoute: (route) ->
-      unless App.user.isLoggedIn()
-        App.router.navigate ''
+      if route isnt ''
+        unless App.user.isLoggedIn()
+          App.router.navigate '',
+            trigger: true
+          return false
 
     onAfterRoute: (route) ->
       @setHeader route
@@ -26,6 +26,7 @@
 
 
     index: ->
+      console.log 'index'
       if App.user.isLoggedIn()
         App.router.navigate @determineLandingScreen()
       else
@@ -38,6 +39,7 @@
           @login.region.empty()
 
     companyProfile: ->
+      console.log 'company Profile'
       @companyProfile = App.request 'company:profile',
         region: App.rootView.body
 

@@ -2,33 +2,20 @@
 
   class Entities.Company extends Backbone.Model
 
-    defaults:
-      id: 1
-
-    blacklist: ['complexes',]
-
+    blacklist: ['complexes','contacts',]
     toJSON: (options) -> _.omit @attributes, @blacklist
 
-    localStorage: new Backbone.LocalStorage "Company"
+    # parse: (response, options) ->
+    #   console.log response
+    #   {}
 
-    initialize: ->
-      @setFetchListener()
-      @fetch()
 
-    setFetchListener: ->
-      App.execute 'when:fetched', @, =>
-        complexes = App.request 'entities:complexes',
-          company_id: @get 'id'
-
-        App.execute 'when:fetched', complexes, =>
-          if complexes.length is 0
-            complexes.create()
-
-        complexes.fetch()
-        @set 'complexes', complexes
+    # localStorage: new Backbone.LocalStorage "Company"
+    urlRoot: "http://dev.waterr8.com:8080/api/v1/customer/company"
 
     isSetUp: ->
       @get('phone')? and String(@get('phone')).length > 0
+      false
 
     selectComplex: (id) ->
       complexes = @get('complexes')
@@ -39,5 +26,5 @@
         App.selectedComplex = complexes.at(0)
 
 
-  App.reqres.setHandler 'entities:company', (attrs) ->
+  App.reqres.setHandler 'entities:company', (attrs = {}) ->
     new Entities.Company attrs

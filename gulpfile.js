@@ -20,8 +20,10 @@ gulp.task('scripts', function() {
     .pipe(gulpif(/[.]coffee$/, coffee()))
     .pipe(order([
       'vendor/jquery.js',
+      'vendor/mousetrap.js',
       'vendor/underscore.js',
       'vendor/backbone.js',
+      'vendor/backbone.router.filter.js',
       'vendor/backbone.marionette.js',
       'vendor/**/*.js',
 

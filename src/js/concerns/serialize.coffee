@@ -2,8 +2,14 @@
 
   Concerns.Serialize =
 
-    serialize: ->
-      Backbone.Syphon.serialize @
+    getFormDataContainer: ->
+      if @formContainer
+        return @$ @formContainer
+      else
+        return @
 
-    deserialize: ->
-      Backbone.Syphon.deserialize @, @model.attributes
+    serialize: ->
+      Backbone.Syphon.serialize @getFormDataContainer()
+
+    onRender: ->
+      Backbone.Syphon.deserialize @getFormDataContainer(), @model.attributes
