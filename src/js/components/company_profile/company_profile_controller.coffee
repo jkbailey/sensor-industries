@@ -7,16 +7,15 @@
 
       @companyProfileLayout = new CompanyProfile.Layout
         model: App.company
-        collection: App.company.get 'contacts'
+        collection: App.company.contacts
 
-      @listenTo @companyProfileLayout, 'add:contact', =>
-        App.company.get('contacts').add {}
-
-      @listenTo @companyProfileLayout, 'childview:submit', (x,y,z) ->
-        console.log x, y, z
+      @listenTo @companyProfileLayout, 'add:contact', ->
+        App.company.contacts.add
+          company: App.company.id
+          complex: 0
+          primary: true
 
       @listenTo @companyProfileLayout, 'submit', =>
-        data = @companyProfileLayout.serialize()
         @saveContacts()
         @saveCompany()
 
@@ -29,16 +28,18 @@
       @companyProfileLayout.children.each (view) ->
         view.model.save view.serialize(),
           success: ->
-            console.log 'saved'
+            console.log 'Saved company\'s contact data.'
           error: ->
-            console.log 'error'
+            alert 'There was an error saving one of the company\'s contact.'
         console.log view.serialize()
 
     saveCompany: ->
       App.company.save @companyProfileLayout.serialize(),
         success: =>
-          console.log App.company
-          # @trigger 'company:profile:success'
+          console.log 'Saved company data.'
+          @trigger 'company:profile:success'
+        error: ->
+          alert 'There was an error saving the company data.'
 
 
   App.reqres.setHandler "company:profile", (options = {}) ->

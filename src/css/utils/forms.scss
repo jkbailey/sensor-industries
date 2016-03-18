@@ -12,7 +12,8 @@ $error-text: #e47a00;
   border: 1px solid $form-border;
   padding: 20px;
 
-  + .form-container {
+  + .form-container,
+  &.force-top-margin {
     margin-top: 15px;
   }
 

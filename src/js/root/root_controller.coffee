@@ -49,11 +49,13 @@
           trigger: true
 
     complexProfile: ->
-      if App.company.get('complexes').length < 2
+      if App.company.complexes.length is 1
         App.company.selectComplex()
 
       if not App.selectedComplex
-        App.router.navigate 'complexes'
+        App.router.navigate 'complexes',
+          trigger: true
+          replace: true
       else
         @complexProfile = App.request 'complex:profile',
           region: App.rootView.body
@@ -64,7 +66,22 @@
             trigger: true
 
     listComplexes: ->
-      console.log 'listComplexes'
+      App.company.complexes.fetch
+        success: =>
+          if App.company.complexes.length is 1
+            App.router.navigate 'complex-profile',
+              trigger: true
+              replace: true
+          else
+            @complexes = App.request 'complexes:list',
+              region: App.rootView.body
+
+            @listenTo @complexes, 'complexes:list:selected', =>
+              @complexes.region.empty()
+              App.router.navigate 'complex-profile',
+                trigger: true
+        error: =>
+          alert 'There was an error retrieving the complex data.'
 
     listUnits: ->
       console.log 'listUnits'

@@ -39,6 +39,10 @@ $text-color: #fff;
     }
   }
 
+  &.add-unit {
+    width: 130px;
+  }
+
   &.cancel {
     background: $cancel-color;
 

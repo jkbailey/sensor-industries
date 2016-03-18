@@ -1,15 +1,16 @@
 @Dashboard.module "Entities", (Entities, App, Backbone, Marionette, $, _) ->
 
   class Entities.Contact extends Backbone.Model
-    url: -> "http://dev.waterr8.com:8080/api/v1/customer/contact/#{@id}"
-
     methodToURL:
       'read':   -> "http://dev.waterr8.com:8080/api/v1/customer/contact/#{@id}"
-      'create': -> "http://dev.waterr8.com:8080/api/v1/customer/contact/#{@id}"
+      'create': -> "http://dev.waterr8.com:8080/api/v1/customer/contact/"
       'update': -> "http://dev.waterr8.com:8080/api/v1/customer/contact/#{@id}/update"
       'delete': -> "http://dev.waterr8.com:8080/api/v1/customer/contact/#{@id}/delete"
 
-    @include "MethodToURL"
+    sync: (method, model, options) ->
+      options = options || {}
+      options.url = model.methodToURL[method.toLowerCase()].call @
+      Backbone.sync method, model, options
 
   class Entities.Contacts extends Backbone.Collection
     model: Entities.Contact

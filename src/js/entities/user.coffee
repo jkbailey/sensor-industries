@@ -19,8 +19,8 @@
           if @get('company')
             App.company = App.request 'entities:company', @get('company')
             if @get('contacts')
-              contacts = App.request 'entities:contacts', @get('contacts')
-              App.company.set 'contacts', contacts
+              App.company.contacts = App.request 'entities:contacts', @get('contacts')
+            App.company.complexes = App.request 'entities:complexes'
             @set 'userValid', true
             @trigger 'user:valid'
           else

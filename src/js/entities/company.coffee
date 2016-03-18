@@ -2,7 +2,7 @@
 
   class Entities.Company extends Backbone.Model
 
-    blacklist: ['complexes','contacts',]
+    blacklist: ['contacts',]
     toJSON: (options) -> _.omit @attributes, @blacklist
 
     # parse: (response, options) ->
@@ -18,12 +18,10 @@
       false
 
     selectComplex: (id) ->
-      complexes = @get('complexes')
-
       if id?
-        App.selectedComplex = complexes.get(id)
-      else if complexes.length is 1
-        App.selectedComplex = complexes.at(0)
+        App.selectedComplex = @complexes.get(id)
+      else if @complexes.length is 1
+        App.selectedComplex = @complexes.at(0)
 
 
   App.reqres.setHandler 'entities:company', (attrs = {}) ->

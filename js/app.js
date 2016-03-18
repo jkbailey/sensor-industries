@@ -20539,6 +20539,57 @@ window.JST["components/company_profile/templates/profile"] = function (__obj) {
 if (!window.JST) {
   window.JST = {};
 }
+window.JST["components/complex_profile/templates/contact"] = function (__obj) {
+  if (!__obj) __obj = {};
+  var __out = [], __capture = function(callback) {
+    var out = __out, result;
+    __out = [];
+    callback.call(this);
+    result = __out.join('');
+    __out = out;
+    return __safe(result);
+  }, __sanitize = function(value) {
+    if (value && value.ecoSafe) {
+      return value;
+    } else if (typeof value !== 'undefined' && value != null) {
+      return __escape(value);
+    } else {
+      return '';
+    }
+  }, __safe, __objSafe = __obj.safe, __escape = __obj.escape;
+  __safe = __obj.safe = function(value) {
+    if (value && value.ecoSafe) {
+      return value;
+    } else {
+      if (!(typeof value !== 'undefined' && value != null)) value = '';
+      var result = new String(value);
+      result.ecoSafe = true;
+      return result;
+    }
+  };
+  if (!__escape) {
+    __escape = __obj.escape = function(value) {
+      return ('' + value)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+    };
+  }
+  (function() {
+    (function() {
+      __out.push('<div class="form-row">\n  <label for="fullName">Name:</label>\n  <input type="text" name="fullName" id="fullName" placeholder="Steve" class="long">\n</div>\n<div class="form-row">\n  <label for="title">Title:</label>\n  <input type="text" name="title" id="title" placeholder="Director of Operations" class="long">\n</div>\n<div class="form-row">\n  <label for="phone">Phone:</label>\n  <input type="text" name="phone" id="phone" placeholder="(805) 987-6543" class="phone">\n</div>\n<div class="form-row">\n  <label for="emailAddress">Email:</label>\n  <input type="text" name="emailAddress" id="emailAddress" placeholder="Jim@sensor-industries.com" class="long">\n</div>\n<hr>\n');
+    
+    }).call(this);
+    
+  }).call(__obj);
+  __obj.safe = __objSafe, __obj.escape = __escape;
+  return __out.join('');
+};
+
+if (!window.JST) {
+  window.JST = {};
+}
 window.JST["components/complex_profile/templates/profile"] = function (__obj) {
   if (!__obj) __obj = {};
   var __out = [], __capture = function(callback) {
@@ -20578,7 +20629,7 @@ window.JST["components/complex_profile/templates/profile"] = function (__obj) {
   }
   (function() {
     (function() {
-      __out.push('<h1>Complex Profile</h1>\n\n<div class="form-container vertical-layout">\n  <h3>Complex Legal Information</h3>\n  <div class="form-row">\n    <label for="legal-name">Legal Name:</label>\n    <input type="text" name="legal-name" id="legal-name" placeholder="Sensor Investments LLC" class="long">\n  </div>\n  <div class="form-row">\n    <label for="legal-phone">Phone:</label>\n    <input type="text" name="legal-phone" id="legal-phone" placeholder="(805) 987-6543" class="phone">\n  </div>\n  <div class="form-row">\n    <label for="legal-address">Address:</label>\n    <input type="text" name="legal-address" id="legal-address" placeholder="1234 Sensor St." class="long">\n  </div>\n  <div class="form-row">\n    <label for="legal-city">City:</label>\n    <input type="text" name="legal-city" id="legal-city" placeholder="Camarillo" class="long">\n  </div>\n  <div class="form-row">\n    <label for="state">State:</label>\n    <div class="state-dropdown-container complex-legal-state short"></div>\n  </div>\n  <div class="form-row">\n    <label for="legal-zip">Zip:</label>\n    <input type="text" name="legal-zip" id="legal-zip" placeholder="93010" class="short">\n  </div>\n</div>\n\n<div class="form-container vertical-layout">\n  <h3>Complex Physical Information</h3>\n  <div class="form-row">\n    <label for="name">Common Name:</label>\n    <input type="text" name="name" id="name" placeholder="Sensor Apartments" class="long">\n  </div>\n  <div class="form-row">\n    <label for="phone">Phone:</label>\n    <input type="text" name="phone" id="phone" placeholder="(805) 987-6543" class="phone">\n  </div>\n  <div class="form-row">\n    <label for="address">Address:</label>\n    <input type="text" name="address" id="address" placeholder="1234 Sensor St." class="long">\n  </div>\n  <div class="form-row">\n    <label for="city">City:</label>\n    <input type="text" name="city" id="city" placeholder="Camarillo" class="long">\n  </div>\n  <div class="form-row">\n    <label for="state">State:</label>\n    <div class="state-dropdown-container complex-physical-state short"></div>\n  </div>\n  <div class="form-row">\n    <label for="zip">Zip:</label>\n    <input type="text" name="zip" id="zip" placeholder="93010" class="short">\n  </div>\n</div>\n\n<div class="form-container vertical-layout">\n  <h3>Complex\'s First Point of Contact</h3>\n  <div class="form-row">\n    <label for="contact[firstName]">First Name:</label>\n    <input type="text" name="contact[firstName]" id="contact[firstName]" placeholder="Steve" class="long">\n  </div>\n  <div class="form-row">\n    <label for="contact[lastName]">Last Name:</label>\n    <input type="text" name="contact[lastName]" id="contact[lastName]" placeholder="Smith" class="long">\n  </div>\n  <div class="form-row">\n    <label for="contact[title]">Title:</label>\n    <input type="text" name="contact[title]" id="contact[title]" placeholder="Director of Operations" class="long">\n  </div>\n  <div class="form-row">\n    <label for="contact[phone]">Phone:</label>\n    <input type="text" name="contact[phone]" id="contact[phone]" placeholder="(805) 987-6543" class="phone">\n  </div>\n  <div class="form-row">\n    <label for="contact[address]">Address:</label>\n    <input type="text" name="contact[address]" id="contact[address]" placeholder="1234 Sensor St." class="long">\n  </div>\n  <div class="form-row">\n    <label for="contact[city]">City:</label>\n    <input type="text" name="contact[city]" id="contact[city]" placeholder="Camarillo" class="long">\n  </div>\n  <div class="form-row">\n    <label for="contact[state]">State:</label>\n    <div class="state-dropdown-container contact-state short"></div>\n  </div>\n  <div class="form-row">\n    <label for="contact[zip]">Zip:</label>\n    <input type="text" name="contact[zip]" id="contact[zip]" placeholder="93010" class="short">\n  </div>\n</div>\n\n<div class="form-row button-row">\n  <button class="btn primary save auto-size">Save & Continue</button>\n</div>\n');
+      __out.push('<h1>Complex Profile</h1>\n\n<div class="complex-form">\n  <div class="form-container vertical-layout">\n    <h3>Complex Legal Information</h3>\n    <div class="form-row">\n      <label for="legal-name">Legal Name:</label>\n      <input type="text" name="legal-name" id="legal-name" placeholder="Sensor Investments LLC" class="long">\n    </div>\n    <div class="form-row">\n      <label for="legal-phone">Phone:</label>\n      <input type="text" name="legal-phone" id="legal-phone" placeholder="(805) 987-6543" class="phone">\n    </div>\n    <div class="form-row">\n      <label for="legal-address">Address:</label>\n      <input type="text" name="legal-address" id="legal-address" placeholder="1234 Sensor St." class="long">\n    </div>\n    <div class="form-row">\n      <label for="legal-city">City:</label>\n      <input type="text" name="legal-city" id="legal-city" placeholder="Camarillo" class="long">\n    </div>\n    <div class="form-row">\n      <label for="state">State:</label>\n      <div class="state-dropdown-container complex-legal-state short"></div>\n    </div>\n    <div class="form-row">\n      <label for="legal-zip">Zip:</label>\n      <input type="text" name="legal-zip" id="legal-zip" placeholder="93010" class="short">\n    </div>\n  </div>\n\n  <div class="form-container vertical-layout">\n    <h3>Complex Physical Information</h3>\n    <div class="form-row">\n      <label for="complexName">Common Name:</label>\n      <input type="text" name="complexName" id="complexName" placeholder="Sensor Apartments" class="long">\n    </div>\n    <div class="form-row">\n      <label for="phone">Phone:</label>\n      <input type="text" name="phone" id="phone" placeholder="(805) 987-6543" class="phone">\n    </div>\n    <div class="form-row">\n      <label for="address">Address:</label>\n      <input type="text" name="address" id="address" placeholder="1234 Sensor St." class="long">\n    </div>\n    <div class="form-row">\n      <label for="city">City:</label>\n      <input type="text" name="city" id="city" placeholder="Camarillo" class="long">\n    </div>\n    <div class="form-row">\n      <label for="state">State:</label>\n      <div class="state-dropdown-container complex-physical-state short"></div>\n    </div>\n    <div class="form-row">\n      <label for="zip">Zip:</label>\n      <input type="text" name="zip" id="zip" placeholder="93010" class="short">\n    </div>\n  </div>\n</div>\n\n<div class="form-container vertical-layout force-top-margin">\n  <h3>Complex\'s Point of Contact</h3>\n  <ul class="contacts-list"></ul>\n  <div class="form-row text-btn-container">\n    <a class="text-btn add-contact">Add an additional point of contact</a>\n  </div>\n</div>\n\n<div class="form-row button-row">\n  <button class="btn primary save auto-size">Save & Continue</button>\n</div>\n');
     
     }).call(this);
     
@@ -20731,7 +20782,7 @@ window.JST["components/unit_list/templates/layout"] = function (__obj) {
   }
   (function() {
     (function() {
-      __out.push('<h1>Complex\'s Units</h1>\n\n<div class="list-container"></div>\n\n<div class="btn-container">\n  <button class="btn add">Add Unit</button>\n</div>\n');
+      __out.push('<h1>Complex\'s Units</h1>\n\n<div class="list-container"></div>\n\n<div class="btn-container">\n  <button class="btn add add-unit">Add Unit</button>\n</div>\n');
     
     }).call(this);
     
@@ -20913,10 +20964,15 @@ window.JST["root/templates/layout"] = function (__obj) {
 (function() {
   this.Dashboard.module('Concerns', function(Concerns, App, Backbone, Marionette, $, _) {
     return Concerns.MethodToURL = {
+      initialize: function() {
+        console.log('init contact');
+        return console.log(this.sync);
+      },
       sync: function(method, model, options) {
         options = options || {};
         options.url = model.methodToURL[method.toLowerCase()].call(this);
-        return Backbone.sync.apply(this, arguments);
+        console.log(method, options.url);
+        return Backbone.sync(method, model, options);
       }
     };
   });
@@ -21131,20 +21187,17 @@ window.JST["root/templates/layout"] = function (__obj) {
         this.region = (options || {}).region;
         this.companyProfileLayout = new CompanyProfile.Layout({
           model: App.company,
-          collection: App.company.get('contacts')
+          collection: App.company.contacts
         });
-        this.listenTo(this.companyProfileLayout, 'add:contact', (function(_this) {
-          return function() {
-            return App.company.get('contacts').add({});
-          };
-        })(this));
-        this.listenTo(this.companyProfileLayout, 'childview:submit', function(x, y, z) {
-          return console.log(x, y, z);
+        this.listenTo(this.companyProfileLayout, 'add:contact', function() {
+          return App.company.contacts.add({
+            company: App.company.id,
+            complex: 0,
+            primary: true
+          });
         });
         this.listenTo(this.companyProfileLayout, 'submit', (function(_this) {
           return function() {
-            var data;
-            data = _this.companyProfileLayout.serialize();
             _this.saveContacts();
             return _this.saveCompany();
           };
@@ -21161,10 +21214,10 @@ window.JST["root/templates/layout"] = function (__obj) {
         return this.companyProfileLayout.children.each(function(view) {
           view.model.save(view.serialize(), {
             success: function() {
-              return console.log('saved');
+              return console.log('Saved company\'s contact data.');
             },
             error: function() {
-              return console.log('error');
+              return alert('There was an error saving one of the company\'s contact.');
             }
           });
           return console.log(view.serialize());
@@ -21175,9 +21228,13 @@ window.JST["root/templates/layout"] = function (__obj) {
         return App.company.save(this.companyProfileLayout.serialize(), {
           success: (function(_this) {
             return function() {
-              return console.log(App.company);
+              console.log('Saved company data.');
+              return _this.trigger('company:profile:success');
             };
-          })(this)
+          })(this),
+          error: function() {
+            return alert('There was an error saving the company data.');
+          }
         });
       };
 
@@ -21266,16 +21323,19 @@ window.JST["root/templates/layout"] = function (__obj) {
         }
         this.region = (options || {}).region;
         this.complexProfileLayout = new ComplexProfile.Layout({
-          model: App.selectedComplex
+          model: App.selectedComplex,
+          collection: App.selectedComplex.contacts
+        });
+        this.listenTo(this.complexProfileLayout, 'add:contact', function() {
+          return App.selectedComplex.contacts.add({
+            company: App.company.id,
+            complex: App.selectedComplex.id
+          });
         });
         this.listenTo(this.complexProfileLayout, 'submit', (function(_this) {
           return function() {
-            return App.selectedComplex.save(_this.complexProfileLayout.serialize(), {
-              success: function() {
-                console.log('saved complex');
-                return _this.trigger('complex:profile:success');
-              }
-            });
+            _this.saveContacts();
+            return _this.saveComplex();
           };
         })(this));
         this.listenTo(this.complexProfileLayout, 'destroy', (function(_this) {
@@ -21284,6 +21344,34 @@ window.JST["root/templates/layout"] = function (__obj) {
           };
         })(this));
         return this.region.show(this.complexProfileLayout);
+      };
+
+      Controller.prototype.saveContacts = function() {
+        return this.complexProfileLayout.children.each(function(view) {
+          view.model.save(view.serialize(), {
+            success: function() {
+              return console.log('Saved complex\'s contact data.');
+            },
+            error: function() {
+              return alert('There was an error saving one of the complex\'s contact.');
+            }
+          });
+          return console.log(view.serialize());
+        });
+      };
+
+      Controller.prototype.saveComplex = function() {
+        return App.selectedComplex.save(this.complexProfileLayout.serialize(), {
+          success: (function(_this) {
+            return function() {
+              console.log('Saved complex data.');
+              return _this.trigger('complex:profile:success');
+            };
+          })(this),
+          error: function() {
+            return alert('There was an error saving the complex data.');
+          }
+        });
       };
 
       return Controller;
@@ -21304,6 +21392,22 @@ window.JST["root/templates/layout"] = function (__obj) {
     hasProp = {}.hasOwnProperty;
 
   this.Dashboard.module("Components.ComplexProfile", function(ComplexProfile, App, Backbone, Marionette, $, _) {
+    ComplexProfile.Contact = (function(superClass) {
+      extend(Contact, superClass);
+
+      function Contact() {
+        return Contact.__super__.constructor.apply(this, arguments);
+      }
+
+      Contact.prototype.template = JST['components/complex_profile/templates/contact'];
+
+      Contact.prototype.tagName = 'li';
+
+      Contact.include('Serialize');
+
+      return Contact;
+
+    })(Marionette.ItemView);
     return ComplexProfile.Layout = (function(superClass) {
       extend(Layout, superClass);
 
@@ -21313,21 +21417,27 @@ window.JST["root/templates/layout"] = function (__obj) {
 
       Layout.prototype.template = JST['components/complex_profile/templates/profile'];
 
+      Layout.prototype.childView = ComplexProfile.Contact;
+
+      Layout.prototype.childViewContainer = '.contacts-list';
+
+      Layout.prototype.formContainer = '.complex-form';
+
       Layout.prototype.triggers = {
-        'click .btn.primary': 'submit'
+        'click .btn.primary': 'submit',
+        'click .add-contact': 'add:contact'
       };
 
       Layout.prototype.onRender = function() {
         this.addStateDropdowns('.complex-legal-state', 'legal-state');
-        this.addStateDropdowns('.complex-physical-state', 'state');
-        return this.addStateDropdowns('.contact-state', 'contact[state]');
+        return this.addStateDropdowns('.complex-physical-state', 'state');
       };
 
       Layout.include("StateDropdown", "Serialize");
 
       return Layout;
 
-    })(Marionette.LayoutView);
+    })(Marionette.CompositeView);
   });
 
 }).call(this);
@@ -21673,7 +21783,7 @@ window.JST["root/templates/layout"] = function (__obj) {
         return Company.__super__.constructor.apply(this, arguments);
       }
 
-      Company.prototype.blacklist = ['complexes', 'contacts'];
+      Company.prototype.blacklist = ['contacts'];
 
       Company.prototype.toJSON = function(options) {
         return _.omit(this.attributes, this.blacklist);
@@ -21687,12 +21797,10 @@ window.JST["root/templates/layout"] = function (__obj) {
       };
 
       Company.prototype.selectComplex = function(id) {
-        var complexes;
-        complexes = this.get('complexes');
         if (id != null) {
-          return App.selectedComplex = complexes.get(id);
-        } else if (complexes.length === 1) {
-          return App.selectedComplex = complexes.at(0);
+          return App.selectedComplex = this.complexes.get(id);
+        } else if (this.complexes.length === 1) {
+          return App.selectedComplex = this.complexes.at(0);
         }
       };
 
@@ -21721,9 +21829,25 @@ window.JST["root/templates/layout"] = function (__obj) {
         return Complex.__super__.constructor.apply(this, arguments);
       }
 
-      Complex.prototype.defaults = {
-        id: 1,
-        company_id: 1
+      Complex.prototype.methodToURL = {
+        'read': function() {
+          return "http://dev.waterr8.com:8080/api/v1/customer/complex/" + this.id;
+        },
+        'create': function() {
+          return "http://dev.waterr8.com:8080/api/v1/customer/complex/";
+        },
+        'update': function() {
+          return "http://dev.waterr8.com:8080/api/v1/customer/complex/" + this.id + "/update";
+        },
+        'delete': function() {
+          return "http://dev.waterr8.com:8080/api/v1/customer/complex/" + this.id + "/delete";
+        }
+      };
+
+      Complex.prototype.sync = function(method, model, options) {
+        options = options || {};
+        options.url = model.methodToURL[method.toLowerCase()].call(this);
+        return Backbone.sync(method, model, options);
       };
 
       Complex.prototype.blacklist = ['units'];
@@ -21732,8 +21856,16 @@ window.JST["root/templates/layout"] = function (__obj) {
         return _.omit(this.attributes, this.blacklist);
       };
 
+      Complex.prototype.initialize = function() {
+        this.contacts = App.request('entities:contacts', App.company.contacts.where({
+          complex: this.id
+        }));
+        return console.log(this);
+      };
+
       Complex.prototype.isSetUp = function() {
-        return (this.get('phone') != null) && String(this.get('phone')).length > 0;
+        (this.get('phone') != null) && String(this.get('phone')).length > 0;
+        return false;
       };
 
       return Complex;
@@ -21748,7 +21880,9 @@ window.JST["root/templates/layout"] = function (__obj) {
 
       Complexes.prototype.model = Entities.Complex;
 
-      Complexes.prototype.localStorage = new Backbone.LocalStorage("Complexes");
+      Complexes.prototype.url = function() {
+        return "http://dev.waterr8.com:8080/api/v1/customer/company/" + App.company.id + "/complexes";
+      };
 
       return Complexes;
 
@@ -21772,16 +21906,12 @@ window.JST["root/templates/layout"] = function (__obj) {
         return Contact.__super__.constructor.apply(this, arguments);
       }
 
-      Contact.prototype.url = function() {
-        return "http://dev.waterr8.com:8080/api/v1/customer/contact/" + this.id;
-      };
-
       Contact.prototype.methodToURL = {
         'read': function() {
           return "http://dev.waterr8.com:8080/api/v1/customer/contact/" + this.id;
         },
         'create': function() {
-          return "http://dev.waterr8.com:8080/api/v1/customer/contact/" + this.id;
+          return "http://dev.waterr8.com:8080/api/v1/customer/contact/";
         },
         'update': function() {
           return "http://dev.waterr8.com:8080/api/v1/customer/contact/" + this.id + "/update";
@@ -21791,7 +21921,11 @@ window.JST["root/templates/layout"] = function (__obj) {
         }
       };
 
-      Contact.include("MethodToURL");
+      Contact.prototype.sync = function(method, model, options) {
+        options = options || {};
+        options.url = model.methodToURL[method.toLowerCase()].call(this);
+        return Backbone.sync(method, model, options);
+      };
 
       return Contact;
 
@@ -21906,13 +22040,12 @@ window.JST["root/templates/layout"] = function (__obj) {
         return this.save(null, {
           success: (function(_this) {
             return function() {
-              var contacts;
               if (_this.get('company')) {
                 App.company = App.request('entities:company', _this.get('company'));
                 if (_this.get('contacts')) {
-                  contacts = App.request('entities:contacts', _this.get('contacts'));
-                  App.company.set('contacts', contacts);
+                  App.company.contacts = App.request('entities:contacts', _this.get('contacts'));
                 }
+                App.company.complexes = App.request('entities:complexes');
                 _this.set('userValid', true);
                 return _this.trigger('user:valid');
               } else {
@@ -22019,11 +22152,14 @@ window.JST["root/templates/layout"] = function (__obj) {
       };
 
       Controller.prototype.complexProfile = function() {
-        if (App.company.get('complexes').length < 2) {
+        if (App.company.complexes.length === 1) {
           App.company.selectComplex();
         }
         if (!App.selectedComplex) {
-          return App.router.navigate('complexes');
+          return App.router.navigate('complexes', {
+            trigger: true,
+            replace: true
+          });
         } else {
           this.complexProfile = App.request('complex:profile', {
             region: App.rootView.body
@@ -22040,7 +22176,33 @@ window.JST["root/templates/layout"] = function (__obj) {
       };
 
       Controller.prototype.listComplexes = function() {
-        return console.log('listComplexes');
+        return App.company.complexes.fetch({
+          success: (function(_this) {
+            return function() {
+              if (App.company.complexes.length === 1) {
+                return App.router.navigate('complex-profile', {
+                  trigger: true,
+                  replace: true
+                });
+              } else {
+                _this.complexes = App.request('complexes:list', {
+                  region: App.rootView.body
+                });
+                return _this.listenTo(_this.complexes, 'complexes:list:selected', function() {
+                  _this.complexes.region.empty();
+                  return App.router.navigate('complex-profile', {
+                    trigger: true
+                  });
+                });
+              }
+            };
+          })(this),
+          error: (function(_this) {
+            return function() {
+              return alert('There was an error retrieving the complex data.');
+            };
+          })(this)
+        });
       };
 
       Controller.prototype.listUnits = function() {

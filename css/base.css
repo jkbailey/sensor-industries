@@ -329,6 +329,8 @@ input::-moz-focus-inner {
     background: #a2d393; }
     .btn.save:hover, .btn.add:hover, .btn.manage:hover {
       background: #9edb8b; }
+  .btn.add-unit {
+    width: 130px; }
   .btn.cancel {
     background: #604d53; }
     .btn.cancel:hover {
@@ -364,7 +366,7 @@ input::-moz-focus-inner {
   background: #f7f6f6;
   border: 1px solid #ebebeb;
   padding: 20px; }
-  .form-container + .form-container {
+  .form-container + .form-container, .form-container.force-top-margin {
     margin-top: 15px; }
   .form-container.clear {
     background: transparent; }

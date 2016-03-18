@@ -3,5 +3,5 @@
 <div class="list-container"></div>
 
 <div class="btn-container">
-  <button class="btn add">Add Unit</button>
+  <button class="btn add add-unit">Add Unit</button>
 </div>
