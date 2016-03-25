@@ -1,0 +1,25 @@
+@media (max-width: 750px) {
+  .form-container.vertical-layout {
+    label {
+      display: block;
+      width: 100%;
+      text-align: left;
+      line-height: 24px;
+      padding-left: 2px;
+    }
+    .long,
+    .phone,
+    .short,
+    .state-dropdown-container {
+      width: 100%;
+    }
+  }
+  .form-container {
+    &:not(.clear) .form-row + .form-row {
+      margin-top: 3px;
+    }
+    hr {
+      border-width: 2px;
+    }
+  }
+}

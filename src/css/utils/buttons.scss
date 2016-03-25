@@ -3,6 +3,7 @@ $cancel-color: #604d53;
 $delete-color: #9da3a4;
 $delete-hover-color: #b52;
 $text-color: #fff;
+$utility-color: #3498DB;
 
 .btn {
   @include size(120px 46px);
@@ -24,18 +25,29 @@ $text-color: #fff;
     font-size: 14px;
   }
 
+  &.small {
+
+  }
+
   &.auto-size {
     width: auto;
     padding: 1px 35px 0;
   }
 
   &.save,
-  &.add,
   &.manage {
     background: $save-color;
 
     &:hover {
       background: saturate($save-color, 10);
+    }
+  }
+
+  &.add {
+    background: $utility-color;
+
+    &:hover {
+      background: saturate($utility-color, 10);
     }
   }
 
@@ -98,4 +110,8 @@ $text-color: #fff;
     margin-right: 7px;
     vertical-align: middle;
   }
+}
+
+.btn-container {
+  margin-top: 30px;
 }

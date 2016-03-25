@@ -1,0 +1,66 @@
+.unit-container {
+  position: relative;
+
+  .left-side {
+    border-right: 1px solid $body-bg;
+    float: left;
+    text-align: right;
+    width: 50%;
+
+    label {
+      display: block;
+      width: 80px;
+    }
+  }
+
+  .right-side {
+    float: left;
+    padding-left: 20px;
+  }
+
+  .edit-bar {
+    @include position(relative, 20px null null null);
+    clear: both;
+    background: $body-bg;
+    margin: 20px -20px 0;
+    text-align: right;
+
+    .btn {
+      padding: 1px 10px 0;
+      margin: 5px;
+      height: 32px;
+      font-size: 12px;
+
+      &.save {
+        margin-left: 0;
+        width: 85px;
+      }
+
+      &.cancel {
+        margin-right: 0;
+        width: 85px;
+      }
+
+      &.add {
+        margin-right: 20px;
+      }
+    }
+  }
+
+  .input-small {
+    width: 60px;
+  }
+
+  h5 {
+    font-size: 11px;
+    font-weight: 600;
+    margin: 0;
+    opacity: .5;
+    text-transform: uppercase;
+  }
+
+  &:after {
+    @include pseudo(block);
+    clear: both;
+  }
+}

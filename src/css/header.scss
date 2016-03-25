@@ -131,4 +131,12 @@ $header-user-padding: 25px;
       display: block;
     }
   }
+
+  .global-error:not(:empty) {
+    position: absolute;
+    background: #d20;
+    width: 100%;
+    text-align: center;
+    font-size: 13px;
+  }
 }

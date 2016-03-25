@@ -7,6 +7,7 @@
     template: JST['components/unit_list/templates/unit']
     childViewContainer: '.list-sensors'
     childView: UnitList.Sensor
+    className: 'form-container unit-container'
 
   class UnitList.Layout extends Marionette.CompositeView
     template: JST['components/unit_list/templates/layout']

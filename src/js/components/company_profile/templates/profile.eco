@@ -4,27 +4,27 @@
   <h3>Parent Company Information</h3>
   <div class="form-row">
     <label for="companyName">Name:</label>
-    <input type="text" name="companyName" id="companyName" placeholder="Sensor Industries Inc." class="long">
+    <div class="input-container long"><input type="text" name="companyName" id="companyName" placeholder="Sensor Industries Inc."></div>
   </div>
   <div class="form-row">
     <label for="phone">Phone:</label>
-    <input type="text" name="phone" id="phone" placeholder="(805) 987-6543" class="phone">
+    <div class="input-container phone"><input type="text" name="phone" id="phone" placeholder="(805) 987-6543"></div>
   </div>
   <div class="form-row">
     <label for="address">Address:</label>
-    <input type="text" name="address" id="address" placeholder="1234 Sensor st." class="long">
+    <div class="input-container long"><input type="text" name="address" id="address" placeholder="1234 Sensor st."></div>
   </div>
   <div class="form-row">
     <label for="city">City:</label>
-    <input type="text" name="city" id="city" placeholder="Camarillo" class="long">
+    <div class="input-container long"><input type="text" name="city" id="city" placeholder="Camarillo"></div>
   </div>
   <div class="form-row">
     <label for="state">State:</label>
-    <div class="state-dropdown-container company-state short"></div>
+    <div class="input-container short"><div class="state-dropdown-container company-state"></div></div>
   </div>
   <div class="form-row">
     <label for="zip">Zip:</label>
-    <input type="text" name="zip" id="zip" placeholder="93010" class="short">
+    <div class="input-container short"><input type="text" name="zip" id="zip" placeholder="93010"></div>
   </div>
 </div>
 

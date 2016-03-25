@@ -70,6 +70,11 @@ $error-text: #e47a00;
     text-align: center;
   }
 
+  .half-row {
+    float: left;
+    width: 50%;
+  }
+
   label {
     float: left;
     font-size: 14px;
@@ -93,6 +98,58 @@ $error-text: #e47a00;
   &:after {
     @include pseudo(block);
     clear: both;
+  }
+
+  .input-container {
+    display: inline-block;
+    position: relative;
+
+    input {
+      width: 100%;
+
+      &.error {
+        border-color: #BB5656;
+
+        &:focus + .input-error {
+          margin-bottom: 2px;
+        }
+      }
+    }
+
+    .input-error {
+      @include position(absolute, null null 100% 0);
+      width: auto;
+      background: #fff;
+      padding: 4px 10px;
+      font-size: 13px;
+      border-radius: 4px;
+      box-shadow: 0 1px 13px rgba(0,0,0,.07);
+      margin-bottom: -9px;
+      margin-left: 5px;
+      color: #c30;
+      border: 1px solid #ddd;
+      pointer-events: none;
+
+      &:after,
+      &:before {
+        @include pseudo(block);
+        @include position(absolute, 100% null null 10px);
+        border-style: solid;
+        border-color: transparent;
+        border-width: 8px 11px;
+      }
+      &:before {
+        border-top-color: #ddd;
+      }
+      &:after {
+        border-top-color: #fff;
+        margin-top: -1px;
+      }
+    }
+
+    &.phone .input-error {
+      width: 247px;
+    }
   }
 
   .error-text {

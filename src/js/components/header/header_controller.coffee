@@ -9,6 +9,9 @@
       @listenTo @headerLayout, 'show', =>
         @setUserBox()
 
+      @listenTo App.vent, 'global:error', (message) =>
+        @headerLayout.showError message
+
       @region.show @headerLayout
 
     onNavigate: (route) ->

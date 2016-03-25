@@ -7,6 +7,7 @@
       nav: '.complex-nav'
       userBox: '.user'
       userBoxText: '.user .name span'
+      errorBox: '.global-error'
 
     updateUserBoxText: (text) ->
       @ui.userBoxText.text text
@@ -22,3 +23,6 @@
 
     hideNav: ->
       @ui.nav.hide()
+
+    showError: (message) ->
+      @ui.errorBox.text message

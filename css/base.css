@@ -325,10 +325,14 @@ input::-moz-focus-inner {
   .btn.auto-size {
     width: auto;
     padding: 1px 35px 0; }
-  .btn.save, .btn.add, .btn.manage {
+  .btn.save, .btn.manage {
     background: #a2d393; }
-    .btn.save:hover, .btn.add:hover, .btn.manage:hover {
+    .btn.save:hover, .btn.manage:hover {
       background: #9edb8b; }
+  .btn.add {
+    background: #3498DB; }
+    .btn.add:hover {
+      background: #289ae7; }
   .btn.add-unit {
     width: 130px; }
   .btn.cancel {
@@ -361,6 +365,9 @@ input::-moz-focus-inner {
     line-height: 16px;
     margin-right: 7px;
     vertical-align: middle; }
+
+.btn-container {
+  margin-top: 30px; }
 
 .form-container {
   background: #f7f6f6;
@@ -400,6 +407,9 @@ input::-moz-focus-inner {
   .form-row.button-row {
     margin-top: 20px;
     text-align: center; }
+  .form-row .half-row {
+    float: left;
+    width: 50%; }
   .form-row label {
     float: left;
     font-size: 14px;
@@ -416,6 +426,46 @@ input::-moz-focus-inner {
     content: '';
     display: block;
     clear: both; }
+  .form-row .input-container {
+    display: inline-block;
+    position: relative; }
+    .form-row .input-container input {
+      width: 100%; }
+      .form-row .input-container input.error {
+        border-color: #BB5656; }
+        .form-row .input-container input.error:focus + .input-error {
+          margin-bottom: 2px; }
+    .form-row .input-container .input-error {
+      position: absolute;
+      bottom: 100%;
+      left: 0;
+      width: auto;
+      background: #fff;
+      padding: 4px 10px;
+      font-size: 13px;
+      border-radius: 4px;
+      box-shadow: 0 1px 13px rgba(0, 0, 0, 0.07);
+      margin-bottom: -9px;
+      margin-left: 5px;
+      color: #c30;
+      border: 1px solid #ddd;
+      pointer-events: none; }
+      .form-row .input-container .input-error:after, .form-row .input-container .input-error:before {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 100%;
+        left: 10px;
+        border-style: solid;
+        border-color: transparent;
+        border-width: 8px 11px; }
+      .form-row .input-container .input-error:before {
+        border-top-color: #ddd; }
+      .form-row .input-container .input-error:after {
+        border-top-color: #fff;
+        margin-top: -1px; }
+    .form-row .input-container.phone .input-error {
+      width: 247px; }
   .form-row .error-text {
     position: absolute;
     top: -45px;
@@ -485,6 +535,23 @@ input[type="number"] {
   input[type="password"].no-border,
   input[type="number"].no-border {
     border: 0; }
+
+@media (max-width: 750px) {
+  .form-container.vertical-layout label {
+    display: block;
+    width: 100%;
+    text-align: left;
+    line-height: 24px;
+    padding-left: 2px; }
+  .form-container.vertical-layout .long,
+  .form-container.vertical-layout .phone,
+  .form-container.vertical-layout .short,
+  .form-container.vertical-layout .state-dropdown-container {
+    width: 100%; }
+  .form-container:not(.clear) .form-row + .form-row {
+    margin-top: 3px; }
+  .form-container hr {
+    border-width: 2px; } }
 
 * {
   box-sizing: border-box; }
@@ -602,6 +669,16 @@ hr {
             background: #3c3c3c; }
     #header .user:hover ul {
       display: block; }
+  #header .global-error:not(:empty) {
+    position: absolute;
+    background: #d20;
+    width: 100%;
+    text-align: center;
+    font-size: 13px; }
+
+@media (max-width: 750px) {
+  #header h1 {
+    display: none; } }
 
 #body {
   margin: auto;
@@ -617,6 +694,10 @@ hr {
     padding-bottom: 20px;
     text-align: center;
     text-transform: uppercase; }
+
+@media (max-width: 750px) {
+  #body h1 {
+    font-size: 18px; } }
 
 #overlay {
   position: fixed;
@@ -689,3 +770,49 @@ hr {
     top: -45px;
     border-radius: 4px;
     box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1); }
+
+.unit-container {
+  position: relative; }
+  .unit-container .left-side {
+    border-right: 1px solid #fff;
+    float: left;
+    text-align: right;
+    width: 50%; }
+    .unit-container .left-side label {
+      display: block;
+      width: 80px; }
+  .unit-container .right-side {
+    float: left;
+    padding-left: 20px; }
+  .unit-container .edit-bar {
+    position: relative;
+    top: 20px;
+    clear: both;
+    background: #fff;
+    margin: 20px -20px 0;
+    text-align: right; }
+    .unit-container .edit-bar .btn {
+      padding: 1px 10px 0;
+      margin: 5px;
+      height: 32px;
+      font-size: 12px; }
+      .unit-container .edit-bar .btn.save {
+        margin-left: 0;
+        width: 85px; }
+      .unit-container .edit-bar .btn.cancel {
+        margin-right: 0;
+        width: 85px; }
+      .unit-container .edit-bar .btn.add {
+        margin-right: 20px; }
+  .unit-container .input-small {
+    width: 60px; }
+  .unit-container h5 {
+    font-size: 11px;
+    font-weight: 600;
+    margin: 0;
+    opacity: .5;
+    text-transform: uppercase; }
+  .unit-container:after {
+    content: '';
+    display: block;
+    clear: both; }

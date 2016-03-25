@@ -12,6 +12,16 @@
       options.url = model.methodToURL[method.toLowerCase()].call @
       Backbone.sync method, model, options
 
+    validation:
+      fullName:
+        required: true
+      emailAddress:
+        pattern: 'email'
+      title:
+        required: true
+      phone:
+        minLength: 10
+
   class Entities.Contacts extends Backbone.Collection
     model: Entities.Contact
 

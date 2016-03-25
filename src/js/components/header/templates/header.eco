@@ -14,3 +14,5 @@
     <li><a href="#sign-out" class="sign-out">Sign Out</a></li>
   </ul>
 </div>
+
+<div class="global-error"></div>

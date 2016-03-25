@@ -4,11 +4,13 @@
 
     initialize: (options = {}) ->
       { @region } = options || {}
-      @unitListLayout = new UnitList.Layout()
+      @unitListLayout = new UnitList.Layout
+        collection: App.selectedComplex.units
 
       @listenTo @unitListLayout, 'add', =>
         console.log 'Unit added'
-        @trigger 'unit:list:add'
+        App.selectedComplex.units.add
+          complex: App.selectedComplex.id
 
 
       @listenTo @unitListLayout, 'save:unit', =>

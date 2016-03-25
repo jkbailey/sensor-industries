@@ -6,7 +6,7 @@
       if @formContainer
         return @$ @formContainer
       else
-        return @
+        return @$el
 
     serialize: ->
       Backbone.Syphon.serialize @getFormDataContainer()

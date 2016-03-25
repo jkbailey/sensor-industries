@@ -4,7 +4,7 @@
     template: JST['components/company_profile/templates/contact']
     tagName: 'li'
 
-    @include 'Serialize'
+    @include 'Serialize', 'Validation'
 
   class CompanyProfile.Layout extends Marionette.CompositeView
     template: JST['components/company_profile/templates/profile']
@@ -16,7 +16,13 @@
       'click .btn.primary': 'submit'
       'click .add-contact': 'add:contact'
 
+    modelEvents:
+      'invalid': 'modelIsInvalid'
+
     onRender: ->
       @addStateDropdowns '.company-state', 'state'
 
-    @include 'StateDropdown', 'Serialize'
+    modelIsInvalid: ->
+      console.log 'is invalid'
+
+    @include 'StateDropdown', 'Serialize', 'Validation'

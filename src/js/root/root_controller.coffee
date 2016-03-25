@@ -85,8 +85,17 @@
 
     listUnits: ->
       console.log 'listUnits'
-      @unitList = App.request 'unit:list',
-        region: App.rootView.body
+      if not App.selectedComplex
+        App.router.navigate 'complexes',
+          trigger: true
+          replace: true
+      else
+        App.selectedComplex.units.fetch
+          success: =>
+            @unitList = App.request 'unit:list',
+              region: App.rootView.body
+          erros: =>
+            alert 'There was an error retrieving the unit list data.'
 
     alerts: ->
       console.log 'alerts'

@@ -1,30 +1,29 @@
 @Dashboard.module "Entities", (Entities, App, Backbone, Marionette, $, _) ->
 
   class Entities.Unit extends Backbone.Model
+    methodToURL:
+      'read':   -> "http://dev.waterr8.com:8080/api/v1/customer/unit/#{@id}"
+      'create': -> "http://dev.waterr8.com:8080/api/v1/customer/unit/"
+      'update': -> "http://dev.waterr8.com:8080/api/v1/customer/unit/#{@id}/update"
+      'delete': -> "http://dev.waterr8.com:8080/api/v1/customer/unit/#{@id}/delete"
 
-    defaults:
-      id: 1
-      complex_id: 1
+    sync: (method, model, options) ->
+      options = options || {}
+      options.url = model.methodToURL[method.toLowerCase()].call @
+      Backbone.sync method, model, options
 
     blacklist: ['sensors',]
-
     toJSON: (options) -> _.omit @attributes, @blacklist
-
-    # localStorage: new Backbone.LocalStorage "Complex"
-    # url: 'http://sensor.dev/complex'
 
     initialize: ->
       console.log 'init unit'
-      # @fetch()
-      # @set 'units', App.request 'entities:units'
 
     isSetUp: ->
       @get('gateway')? and String(@get('gateway')).length > 0
 
   class Entities.Units extends Backbone.Collection
     model: Entities.Unit
-    localStorage: new Backbone.LocalStorage "Units"
-    # url: 'http://sensor.dev/complexes'
+    url: -> "http://dev.waterr8.com:8080/api/v1/customer/complex/#{App.selectedComplex.id}/units"
 
-  App.reqres.setHandler 'entities:units', (options) ->
-    new Entities.Units [], options
+  App.reqres.setHandler 'entities:units', (units) ->
+    new Entities.Units units

@@ -16,8 +16,9 @@
           primary: true
 
       @listenTo @companyProfileLayout, 'submit', =>
-        @saveContacts()
-        @saveCompany()
+        if @allValid()
+          @saveContacts()
+          @saveCompany()
 
       @listenTo @companyProfileLayout, 'destroy', =>
         @destroy()
@@ -40,6 +41,19 @@
           @trigger 'company:profile:success'
         error: ->
           alert 'There was an error saving the company data.'
+
+    allValid: ->
+      valid = true
+      @companyProfileLayout.children.each (view) ->
+        if view.preValidate()
+          console.log 'contact not valid'
+          valid = false
+      if @companyProfileLayout.preValidate()
+        console.log 'company not valid'
+        valid = false
+      console.log valid
+      valid
+
 
 
   App.reqres.setHandler "company:profile", (options = {}) ->

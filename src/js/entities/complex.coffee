@@ -18,8 +18,7 @@
     initialize: ->
       @contacts = App.request 'entities:contacts', App.company.contacts.where
         complex: @id
-
-      console.log @
+      @units = App.request 'entities:units'
 
     isSetUp: ->
       @get('phone')? and String(@get('phone')).length > 0

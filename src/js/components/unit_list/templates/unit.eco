@@ -1,26 +1,26 @@
 <div class="left-side">
-  <div>
-    <div class="form-row half unit-left-first-col">
-      <label for="unit_id">Unit:</label>
-      <input type="text" id="unit_id" name="unit_id" placeholder="unit_id" class="">
+  <div class="form-row">
+    <div class="half-row unit-left-first-col">
+      <label for="unitNumber">Unit:</label>
+      <input type="text" id="unitNumber" name="unitNumber" placeholder="1534" class="input-small">
     </div>
-    <div class="form-row half unit-left-second-col">
-      <label for="num_of_beds">Bedrooms:</label>
-      <input type="text" id="num_of_beds" name="num_of_beds" placeholder="num_of_beds" class="">
-    </div>
-  </div>
-  <div>
-    <div class="form-row half unit-left-first-col">
-      <label for="num_of_tenants">Tenants:</label>
-      <input type="text" id="num_of_tenants" name="num_of_tenants" placeholder="num_of_tenants" class="">
-    </div>
-    <div class="form-row half unit-left-second-col">
-      <label for="num_of_baths">Bathrooms:</label>
-      <input type="text" id="num_of_baths" name="num_of_baths" placeholder="num_of_baths" class="">
+    <div class="half-row unit-left-second-col">
+      <label for="bedrooms">Bedrooms:</label>
+      <input type="text" id="bedrooms" name="bedrooms" placeholder="2" class="input-small">
     </div>
   </div>
-  <div>
-    <div class="form-row">
+  <div class="form-row">
+    <div class="half-row unit-left-first-col">
+      <label for="tenants">Tenants:</label>
+      <input type="text" id="tenants" name="tenants" placeholder="3" class="input-small">
+    </div>
+    <div class="half-row unit-left-second-col">
+      <label for="bathrooms">Bathrooms:</label>
+      <input type="text" id="bathrooms" name="bathrooms" placeholder="2" class="input-small">
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="full-row">
       <label for="unit_node">Unit Node:</label>
       <input type="text" id="unit_node" name="unit_node" placeholder="unit_node" class="">
     </div>
@@ -30,4 +30,10 @@
 <div class="right-side">
   <h5>Sensors</h5>
   <div class="list-sensors"></div>
+</div>
+
+<div class="edit-bar">
+  <button class="btn add add-sensor">Add Sensor</button>
+  <button class="btn cancel">Cancel</button>
+  <button class="btn save">Save</button>
 </div>
