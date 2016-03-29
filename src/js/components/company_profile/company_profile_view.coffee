@@ -4,6 +4,9 @@
     template: JST['components/company_profile/templates/contact']
     tagName: 'li'
 
+    triggers:
+      'click .text-btn.delete': 'delete:contact'
+
     @include 'Serialize', 'Validation'
 
   class CompanyProfile.Layout extends Marionette.CompositeView

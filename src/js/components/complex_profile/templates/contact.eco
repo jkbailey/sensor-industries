@@ -1,17 +1,20 @@
 <div class="form-row">
   <label for="fullName">Name:</label>
-  <input type="text" name="fullName" id="fullName" placeholder="Steve" class="long">
+  <div class="input-container long"><input type="text" name="fullName" id="fullName" placeholder="Steve"></div>
 </div>
 <div class="form-row">
   <label for="title">Title:</label>
-  <input type="text" name="title" id="title" placeholder="Director of Operations" class="long">
+  <div class="input-container long"><input type="text" name="title" id="title" placeholder="Director of Operations"></div>
 </div>
 <div class="form-row">
   <label for="phone">Phone:</label>
-  <input type="text" name="phone" id="phone" placeholder="(805) 987-6543" class="phone">
+  <div class="input-container phone"><input type="text" name="phone" id="phone" placeholder="(805) 987-6543"></div>
 </div>
 <div class="form-row">
   <label for="emailAddress">Email:</label>
-  <input type="text" name="emailAddress" id="emailAddress" placeholder="Jim@sensor-industries.com" class="long">
+  <div class="input-container long"><input type="text" name="emailAddress" id="emailAddress" placeholder="Jim@sensor-industries.com"></div>
+</div>
+<div class="form-row text-btn-container">
+  <a class="text-btn delete delete-contact">Remove this contact</a>
 </div>
 <hr>

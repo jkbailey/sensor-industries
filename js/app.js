@@ -21186,7 +21186,7 @@ window.JST["components/company_profile/templates/contact"] = function (__obj) {
   }
   (function() {
     (function() {
-      __out.push('<div class="form-row">\n  <label for="fullName">Name:</label>\n  <div class="input-container long"><input type="text" name="fullName" id="fullName" placeholder="Steve"></div>\n</div>\n<div class="form-row">\n  <label for="title">Title:</label>\n  <div class="input-container long"><input type="text" name="title" id="title" placeholder="Director of Operations"></div>\n</div>\n<div class="form-row">\n  <label for="phone">Phone:</label>\n  <div class="input-container phone"><input type="text" name="phone" id="phone" placeholder="(805) 987-6543"></div>\n</div>\n<div class="form-row">\n  <label for="emailAddress">Email:</label>\n  <div class="input-container long"><input type="text" name="emailAddress" id="emailAddress" placeholder="Jim@sensor-industries.com"></div>\n</div>\n<hr>\n');
+      __out.push('<div class="form-row">\n  <label for="fullName">Name:</label>\n  <div class="input-container long"><input type="text" name="fullName" id="fullName" placeholder="Steve"></div>\n</div>\n<div class="form-row">\n  <label for="title">Title:</label>\n  <div class="input-container long"><input type="text" name="title" id="title" placeholder="Director of Operations"></div>\n</div>\n<div class="form-row">\n  <label for="phone">Phone:</label>\n  <div class="input-container phone"><input type="text" name="phone" id="phone" placeholder="(805) 987-6543"></div>\n</div>\n<div class="form-row">\n  <label for="emailAddress">Email:</label>\n  <div class="input-container long"><input type="text" name="emailAddress" id="emailAddress" placeholder="Jim@sensor-industries.com"></div>\n</div>\n<div class="form-row text-btn-container">\n  <a class="text-btn delete">Remove this contact</a>\n</div>\n<hr>\n');
     
     }).call(this);
     
@@ -21288,7 +21288,7 @@ window.JST["components/complex_profile/templates/contact"] = function (__obj) {
   }
   (function() {
     (function() {
-      __out.push('<div class="form-row">\n  <label for="fullName">Name:</label>\n  <input type="text" name="fullName" id="fullName" placeholder="Steve" class="long">\n</div>\n<div class="form-row">\n  <label for="title">Title:</label>\n  <input type="text" name="title" id="title" placeholder="Director of Operations" class="long">\n</div>\n<div class="form-row">\n  <label for="phone">Phone:</label>\n  <input type="text" name="phone" id="phone" placeholder="(805) 987-6543" class="phone">\n</div>\n<div class="form-row">\n  <label for="emailAddress">Email:</label>\n  <input type="text" name="emailAddress" id="emailAddress" placeholder="Jim@sensor-industries.com" class="long">\n</div>\n<hr>\n');
+      __out.push('<div class="form-row">\n  <label for="fullName">Name:</label>\n  <div class="input-container long"><input type="text" name="fullName" id="fullName" placeholder="Steve"></div>\n</div>\n<div class="form-row">\n  <label for="title">Title:</label>\n  <div class="input-container long"><input type="text" name="title" id="title" placeholder="Director of Operations"></div>\n</div>\n<div class="form-row">\n  <label for="phone">Phone:</label>\n  <div class="input-container phone"><input type="text" name="phone" id="phone" placeholder="(805) 987-6543"></div>\n</div>\n<div class="form-row">\n  <label for="emailAddress">Email:</label>\n  <div class="input-container long"><input type="text" name="emailAddress" id="emailAddress" placeholder="Jim@sensor-industries.com"></div>\n</div>\n<div class="form-row text-btn-container">\n  <a class="text-btn delete delete-contact">Remove this contact</a>\n</div>\n<hr>\n');
     
     }).call(this);
     
@@ -21842,11 +21842,14 @@ window.JST["root/templates/layout"] = function (__obj) {
       modelInvalid: function(errors) {
         var keys;
         keys = _.keys(errors);
-        return _.each(keys, (function(_this) {
+        _.each(keys, (function(_this) {
           return function(key) {
             return _this.addError(key, errors[key]);
           };
         })(this));
+        return $('html,body').animate({
+          scrollTop: $('.input-error').first().offset().top - 75
+        }, 600);
       },
       preValidate: function() {
         var errors;
@@ -21942,7 +21945,6 @@ window.JST["root/templates/layout"] = function (__obj) {
 (function() {
   this.Dashboard.module("Utilities", function(Utilities, App, Backbone, Marionette, $, _) {
     var _sync;
-    Backbone.emulateHTTP = true;
     _sync = Backbone.sync;
     return Backbone.sync = function(method, model, options) {
       var data, error, sync;
@@ -21959,6 +21961,9 @@ window.JST["root/templates/layout"] = function (__obj) {
         data = options.data;
         _.extend(data, options.attrs || model.toJSON(options));
         options.data = JSON.stringify(data);
+      }
+      if (method === 'update') {
+        method = 'create';
       }
       error = options.error;
       options.error = function(xhr, textStatus, errorThrown) {
@@ -22005,11 +22010,23 @@ window.JST["root/templates/layout"] = function (__obj) {
             primary: true
           });
         });
+        this.listenTo(this.companyProfileLayout, 'childview:delete:contact', function(view) {
+          if (confirm("Are you sure you want to remove " + (view.model.get('fullName')) + " as a point of contact?")) {
+            console.log('delete contact', view.model);
+            return view.model.destroy();
+          }
+        });
         this.listenTo(this.companyProfileLayout, 'submit', (function(_this) {
           return function() {
+            var xhrs;
             if (_this.allValid()) {
-              _this.saveContacts();
-              return _this.saveCompany();
+              xhrs = _this.companyProfileLayout.children.map(function(view) {
+                return view.model.save(view.serialize());
+              });
+              xhrs.push(App.company.save(_this.companyProfileLayout.serialize()));
+              return $.when.apply($, xhrs).then(function() {
+                return _this.trigger('company:profile:success');
+              });
             }
           };
         })(this));
@@ -22021,48 +22038,17 @@ window.JST["root/templates/layout"] = function (__obj) {
         return this.region.show(this.companyProfileLayout);
       };
 
-      Controller.prototype.saveContacts = function() {
-        return this.companyProfileLayout.children.each(function(view) {
-          view.model.save(view.serialize(), {
-            success: function() {
-              return console.log('Saved company\'s contact data.');
-            },
-            error: function() {
-              return alert('There was an error saving one of the company\'s contact.');
-            }
-          });
-          return console.log(view.serialize());
-        });
-      };
-
-      Controller.prototype.saveCompany = function() {
-        return App.company.save(this.companyProfileLayout.serialize(), {
-          success: (function(_this) {
-            return function() {
-              console.log('Saved company data.');
-              return _this.trigger('company:profile:success');
-            };
-          })(this),
-          error: function() {
-            return alert('There was an error saving the company data.');
-          }
-        });
-      };
-
       Controller.prototype.allValid = function() {
         var valid;
         valid = true;
         this.companyProfileLayout.children.each(function(view) {
           if (view.preValidate()) {
-            console.log('contact not valid');
             return valid = false;
           }
         });
         if (this.companyProfileLayout.preValidate()) {
-          console.log('company not valid');
           valid = false;
         }
-        console.log(valid);
         return valid;
       };
 
@@ -22094,6 +22080,10 @@ window.JST["root/templates/layout"] = function (__obj) {
       Contact.prototype.template = JST['components/company_profile/templates/contact'];
 
       Contact.prototype.tagName = 'li';
+
+      Contact.prototype.triggers = {
+        'click .text-btn.delete': 'delete:contact'
+      };
 
       Contact.include('Serialize', 'Validation');
 
@@ -22832,6 +22822,8 @@ window.JST["root/templates/layout"] = function (__obj) {
       }
 
       Contacts.prototype.model = Entities.Contact;
+
+      Contacts.prototype.comparator = 'id';
 
       return Contacts;
 

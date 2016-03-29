@@ -50,6 +50,11 @@
       _.each keys, (key) =>
         @addError key, errors[key]
 
+      # Scroll to first error
+      $('html,body').animate
+        scrollTop: $('.input-error').first().offset().top - 75
+      , 600
+
     preValidate: ->
       if errors = @model.preValidate @serialize()
         @model.trigger 'validated:invalid', errors

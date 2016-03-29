@@ -24,6 +24,7 @@
 
   class Entities.Contacts extends Backbone.Collection
     model: Entities.Contact
+    comparator: 'id'
 
 
   App.reqres.setHandler 'entities:contact', (attrs = {}) ->

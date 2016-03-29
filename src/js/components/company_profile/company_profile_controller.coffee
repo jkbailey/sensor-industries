@@ -15,43 +15,33 @@
           complex: 0
           primary: true
 
+      @listenTo @companyProfileLayout, 'childview:delete:contact', (view) ->
+        if confirm "Are you sure you want to remove #{view.model.get('fullName')} as a point of contact?"
+          console.log 'delete contact', view.model
+          view.model.destroy()
+
       @listenTo @companyProfileLayout, 'submit', =>
         if @allValid()
-          @saveContacts()
-          @saveCompany()
+          # Create array of contacts and company xhr objects
+          xhrs = @companyProfileLayout.children.map (view) -> view.model.save view.serialize()
+          xhrs.push App.company.save @companyProfileLayout.serialize()
+
+          # Confirm all have saved
+          $.when(xhrs...).then =>
+            @trigger 'company:profile:success'
 
       @listenTo @companyProfileLayout, 'destroy', =>
         @destroy()
 
       @region.show @companyProfileLayout
 
-    saveContacts: ->
-      @companyProfileLayout.children.each (view) ->
-        view.model.save view.serialize(),
-          success: ->
-            console.log 'Saved company\'s contact data.'
-          error: ->
-            alert 'There was an error saving one of the company\'s contact.'
-        console.log view.serialize()
-
-    saveCompany: ->
-      App.company.save @companyProfileLayout.serialize(),
-        success: =>
-          console.log 'Saved company data.'
-          @trigger 'company:profile:success'
-        error: ->
-          alert 'There was an error saving the company data.'
-
     allValid: ->
       valid = true
       @companyProfileLayout.children.each (view) ->
         if view.preValidate()
-          console.log 'contact not valid'
           valid = false
       if @companyProfileLayout.preValidate()
-        console.log 'company not valid'
         valid = false
-      console.log valid
       valid
 
 

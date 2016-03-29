@@ -14,4 +14,7 @@
   <label for="emailAddress">Email:</label>
   <div class="input-container long"><input type="text" name="emailAddress" id="emailAddress" placeholder="Jim@sensor-industries.com"></div>
 </div>
+<div class="form-row text-btn-container">
+  <a class="text-btn delete">Remove this contact</a>
+</div>
 <hr>

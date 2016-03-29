@@ -1,6 +1,6 @@
 @Dashboard.module "Utilities", (Utilities, App, Backbone, Marionette, $, _) ->
 
-  Backbone.emulateHTTP = true;
+  # Backbone.emulateHTTP = true;
 
   _sync = Backbone.sync
   Backbone.sync = (method, model, options) ->
@@ -17,6 +17,9 @@
       _.extend data,
         options.attrs || model.toJSON(options)
       options.data = JSON.stringify data
+
+    if method is 'update'
+      method = 'create'
 
     # Global error catching
     error = options.error
