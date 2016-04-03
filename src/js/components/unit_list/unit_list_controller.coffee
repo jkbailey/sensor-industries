@@ -8,14 +8,15 @@
         collection: App.selectedComplex.units
 
       @listenTo @unitListLayout, 'add', =>
-        console.log 'Unit added'
         App.selectedComplex.units.add
           complex: App.selectedComplex.id
 
 
-      @listenTo @unitListLayout, 'save:unit', =>
-        console.log 'Unit saved'
-        @trigger 'unit:list:add'
+      @listenTo @unitListLayout, 'childview:save:unit', (view) =>
+        unless view.preValidate()
+          xhr = view.model.save view.serialize()
+          $.when(xhr).then =>
+            view.triggerMethod 'saved'
 
       @region.show @unitListLayout
 

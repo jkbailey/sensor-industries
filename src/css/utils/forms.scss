@@ -118,6 +118,7 @@ $error-text: #e47a00;
 
     .input-error {
       @include position(absolute, null null 100% 0);
+      @include transition(margin-bottom .2s ease-in-out);
       width: auto;
       background: #fff;
       padding: 4px 10px;

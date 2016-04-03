@@ -21789,7 +21789,6 @@ window.JST["root/templates/layout"] = function (__obj) {
         'validated:invalid': 'modelInvalid'
       },
       initialize: function() {
-        console.log('validation init', this);
         return Backbone.Validation.bind(this);
       },
       onRender: function() {
@@ -21805,7 +21804,6 @@ window.JST["root/templates/layout"] = function (__obj) {
         })(this));
       },
       onDestroy: function() {
-        console.log('unbind validation');
         Backbone.Validation.unbind(this);
         return this.getFormDataContainer().find(':input').off('focus blur keyup');
       },
@@ -21816,7 +21814,6 @@ window.JST["root/templates/layout"] = function (__obj) {
           el.addClass('error').after("<span class=\"input-error\">" + message + "</span>");
           return $(el).on('keyup', (function(_this) {
             return function() {
-              console.log('keyup after error', _this.model.preValidate(key, el.val()));
               if (!_this.model.preValidate(key, el.val())) {
                 return _this.clearError(key);
               }
@@ -21826,17 +21823,14 @@ window.JST["root/templates/layout"] = function (__obj) {
       },
       clearError: function(key) {
         var el;
-        console.log('clear error', key);
         el = this.getFormDataContainer().find("[name=\"" + key + "\"]");
         el.removeClass('error').siblings('.input-error').remove();
         return $(el).off('keyup');
       },
       hideErrors: function() {
-        console.log('hide errors');
         return this.$('input:not(:focus) + .input-error').hide();
       },
       showErrors: function() {
-        console.log('show errors');
         return this.$('.input-error').show();
       },
       modelInvalid: function(errors) {
@@ -21925,7 +21919,11 @@ window.JST["root/templates/layout"] = function (__obj) {
 
 (function() {
   this.Dashboard.module("Utilities", function(Utilities, App, Backbone, Marionette, $, _) {
-    return Backbone.Model.prototype.parse = function(response, xhr) {
+    var parseFunc;
+    parseFunc = function(response, xhr) {
+      if (!response.status) {
+        return response;
+      }
       if (response.status === "OK") {
         return JSON.parse(response.model);
       } else {
@@ -21933,6 +21931,8 @@ window.JST["root/templates/layout"] = function (__obj) {
         return alert(response);
       }
     };
+    Backbone.Model.prototype.parse = parseFunc;
+    return Backbone.Collection.prototype.parse = parseFunc;
   });
 
 }).call(this);
@@ -22526,16 +22526,20 @@ window.JST["root/templates/layout"] = function (__obj) {
         });
         this.listenTo(this.unitListLayout, 'add', (function(_this) {
           return function() {
-            console.log('Unit added');
             return App.selectedComplex.units.add({
               complex: App.selectedComplex.id
             });
           };
         })(this));
-        this.listenTo(this.unitListLayout, 'save:unit', (function(_this) {
-          return function() {
-            console.log('Unit saved');
-            return _this.trigger('unit:list:add');
+        this.listenTo(this.unitListLayout, 'childview:save:unit', (function(_this) {
+          return function(view) {
+            var xhr;
+            if (!view.preValidate()) {
+              xhr = view.model.save(view.serialize());
+              return $.when(xhr).then(function() {
+                return view.triggerMethod('saved');
+              });
+            }
           };
         })(this));
         return this.region.show(this.unitListLayout);
@@ -22586,6 +22590,26 @@ window.JST["root/templates/layout"] = function (__obj) {
 
       Unit.prototype.className = 'form-container unit-container';
 
+      Unit.prototype.ui = {
+        editBar: '.edit-bar'
+      };
+
+      Unit.prototype.triggers = {
+        'click .btn.save': 'save:unit'
+      };
+
+      Unit.prototype.onRender = function() {
+        if (!this.model.isNew()) {
+          return this.ui.editBar.hide();
+        }
+      };
+
+      Unit.prototype.onSaved = function() {
+        return this.ui.editBar.hide();
+      };
+
+      Unit.include('Serialize', 'Validation');
+
       return Unit;
 
     })(Marionette.CompositeView);
@@ -22624,6 +22648,27 @@ window.JST["root/templates/layout"] = function (__obj) {
       function Company() {
         return Company.__super__.constructor.apply(this, arguments);
       }
+
+      Company.prototype.methodToURL = {
+        'read': function() {
+          return "http://dev.waterr8.com:8080/api/v1/customer/company/" + this.id;
+        },
+        'create': function() {
+          return "http://dev.waterr8.com:8080/api/v1/customer/company/";
+        },
+        'update': function() {
+          return "http://dev.waterr8.com:8080/api/v1/customer/company/" + this.id + "/update";
+        },
+        'delete': function() {
+          return "http://dev.waterr8.com:8080/api/v1/customer/company/" + this.id + "/delete";
+        }
+      };
+
+      Company.prototype.sync = function(method, model, options) {
+        options = options || {};
+        options.url = model.methodToURL[method.toLowerCase()].call(this);
+        return Backbone.sync(method, model, options);
+      };
 
       Company.prototype.blacklist = ['contacts'];
 

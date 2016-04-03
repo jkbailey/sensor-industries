@@ -9,6 +9,21 @@
     childView: UnitList.Sensor
     className: 'form-container unit-container'
 
+    ui:
+      editBar: '.edit-bar'
+
+    triggers:
+      'click .btn.save': 'save:unit'
+
+    onRender: ->
+      unless @model.isNew()
+        @ui.editBar.hide()
+
+    onSaved: ->
+      @ui.editBar.hide()
+
+    @include 'Serialize', 'Validation'
+
   class UnitList.Layout extends Marionette.CompositeView
     template: JST['components/unit_list/templates/layout']
     childViewContainer: '.list-container'

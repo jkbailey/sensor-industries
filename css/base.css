@@ -445,6 +445,9 @@ input::-moz-focus-inner {
       position: absolute;
       bottom: 100%;
       left: 0;
+      -webkit-transition: margin-bottom 0.2s ease-in-out;
+      -moz-transition: margin-bottom 0.2s ease-in-out;
+      transition: margin-bottom 0.2s ease-in-out;
       width: auto;
       background: #fff;
       padding: 4px 10px;
@@ -682,7 +685,9 @@ hr {
     background: #d20;
     width: 100%;
     text-align: center;
-    font-size: 13px; }
+    font-size: 13px;
+    line-height: 24px;
+    padding: 18px; }
 
 @media (max-width: 750px) {
   #header h1 {

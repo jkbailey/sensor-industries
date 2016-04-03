@@ -1,6 +1,16 @@
 @Dashboard.module "Entities", (Entities, App, Backbone, Marionette, $, _) ->
 
   class Entities.Company extends Backbone.Model
+    methodToURL:
+      'read':   -> "http://dev.waterr8.com:8080/api/v1/customer/company/#{@id}"
+      'create': -> "http://dev.waterr8.com:8080/api/v1/customer/company/"
+      'update': -> "http://dev.waterr8.com:8080/api/v1/customer/company/#{@id}/update"
+      'delete': -> "http://dev.waterr8.com:8080/api/v1/customer/company/#{@id}/delete"
+
+    sync: (method, model, options) ->
+      options = options || {}
+      options.url = model.methodToURL[method.toLowerCase()].call @
+      Backbone.sync method, model, options
 
     blacklist: ['contacts',]
     toJSON: (options) -> _.omit @attributes, @blacklist
